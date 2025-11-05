@@ -1,4 +1,4 @@
-name: Run Encrypted Script
+name: Run Encrypted Script and Push Output
 
 on:
   workflow_dispatch:
@@ -13,7 +13,8 @@ jobs:
       - name: Install dependencies
         run: pip install cryptography requests
       
-      - name: Run encrypted script
+      - name: Run encrypted script with repo sync
         env:
           FERNET_KEY: ${{ secrets.FERNET_KEY }}
+          PRIVATE_REPO_URL: ${{ secrets.PRIVATE_REPO_URL }}
         run: python runner.py
