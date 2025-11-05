@@ -2,6 +2,8 @@ name: Run Encrypted Script and Push Output
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"  # Runs every 10 minutes
 
 jobs:
   run:
@@ -17,5 +19,4 @@ jobs:
         env:
           FERNET_KEY: ${{ secrets.FERNET_KEY }}
           PRIVATE_REPO_URL: ${{ secrets.PRIVATE_REPO_URL }}
-         
         run: python runner.py
