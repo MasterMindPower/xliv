@@ -16,6 +16,6 @@ jobs:
       - name: Run encrypted script with repo sync
         env:
           FERNET_KEY: ${{ secrets.FERNET_KEY }}
-          PRIVATE_REPO_URL: https://x-access-token:${{ secrets.PRIVATE_REPO_TOKEN }}@github.com/MasterMindPower/sliv_plays.git
+          PRIVATE_REPO_URL: ${{ secrets.PRIVATE_REPO_URL }}
          
         run: python runner.py
